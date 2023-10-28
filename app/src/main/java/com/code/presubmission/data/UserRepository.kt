@@ -29,7 +29,7 @@ class UserRepository private constructor(
 
 
     private val _isLoading = MutableLiveData<Boolean>()
-    val Loading: LiveData<Boolean> = _isLoading
+    val loading: LiveData<Boolean> = _isLoading
 
 
     fun signup(name: String, email: String, password: String) = liveData {

@@ -7,7 +7,7 @@ import com.code.presubmission.data.UserRepository
 import com.code.presubmission.data.pref.UserModel
 
 class DetailViewModel(private val repository: UserRepository): ViewModel() {
-    val Loading = repository.Loading
+    val Loading = repository.loading
     fun getSession(): LiveData<UserModel> {
         return repository.getSession().asLiveData()
     }

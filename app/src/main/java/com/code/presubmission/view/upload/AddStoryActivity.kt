@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import com.code.presubmission.R
 import com.code.presubmission.data.pref.ResultState
 import com.code.presubmission.databinding.ActivityAddStoryBinding
@@ -114,5 +115,4 @@ class AddStoryActivity : AppCompatActivity() {
 
         } ?: Toast.makeText(this, "Gambar masih kosong", Toast.LENGTH_SHORT).show()
     }
-
 }

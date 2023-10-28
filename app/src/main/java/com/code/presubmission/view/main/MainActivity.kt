@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun showLoading(isLoading: Boolean){
+    private fun showLoading(isLoading: Boolean){
         binding.progress.visibility =if(isLoading) View.VISIBLE else View.GONE
     }
 

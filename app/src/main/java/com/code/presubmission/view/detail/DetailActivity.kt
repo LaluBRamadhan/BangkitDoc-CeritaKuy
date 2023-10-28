@@ -45,15 +45,17 @@ class DetailActivity : AppCompatActivity() {
     }
 
 
-    fun showLoading(isLoading: Boolean){
+    private fun showLoading(isLoading: Boolean){
         binding.progress.visibility =if(isLoading) View.VISIBLE else View.GONE
     }
     private fun setDataDetail(detail: DetailStoryResponse){
-        binding.tvJudulDetail.text = detail.story?.name
-        binding.tvDeskripsiDetail.text = detail.story?.description
-        Glide.with(this)
-            .load(detail.story?.photoUrl)
-            .into(binding.ivStory)
+        binding.apply {
+            tvJudulDetail.text = detail.story?.name
+            tvDeskripsiDetail.text = detail.story?.description
+            Glide.with(this@DetailActivity)
+                .load(detail.story?.photoUrl)
+                .into(ivStory)
+        }
     }
 
     companion object{

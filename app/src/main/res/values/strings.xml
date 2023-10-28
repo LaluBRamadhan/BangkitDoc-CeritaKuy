@@ -11,4 +11,6 @@
     <string name="namaStory">Judul</string>
     <string name="deskripsiStory">Deskripsi</string>
     <string name="edtUpload">Tuliskan ceritamu disini</string>
+
+    <string name="password_error_message">Password tidak boleh kurang dari 8 karakter</string>
 </resources>
