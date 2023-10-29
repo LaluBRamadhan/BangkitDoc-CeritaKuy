@@ -28,7 +28,13 @@ data class Story(
 	@field:SerializedName("description")
 	val description: String? = null,
 
+	@field:SerializedName("lon")
+	val lon: Boolean? = null,
+
 	@field:SerializedName("id")
 	val id: String? = null,
+
+	@field:SerializedName("lat")
+	val lat: Boolean? = null
 
 )

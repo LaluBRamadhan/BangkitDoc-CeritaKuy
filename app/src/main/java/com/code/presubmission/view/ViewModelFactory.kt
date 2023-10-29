@@ -8,6 +8,7 @@ import com.code.presubmission.di.Injection
 import com.code.presubmission.view.detail.DetailViewModel
 import com.code.presubmission.view.login.LoginViewModel
 import com.code.presubmission.view.main.MainViewModel
+import com.code.presubmission.view.maps.MapsViewModel
 import com.code.presubmission.view.signup.SignUpViewModel
 import com.code.presubmission.view.upload.UploadViewModel
 
@@ -30,6 +31,9 @@ class ViewModelFactory(private val repository: UserRepository) : ViewModelProvid
             }
             modelClass.isAssignableFrom(UploadViewModel::class.java) -> {
                 UploadViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(MapsViewModel::class.java) -> {
+                MapsViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

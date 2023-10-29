@@ -16,6 +16,7 @@ import com.code.presubmission.databinding.ActivityMainBinding
 import com.code.presubmission.view.upload.AddStoryActivity
 import com.code.presubmission.view.ViewModelFactory
 import com.code.presubmission.view.adapter.StoryAdapter
+import com.code.presubmission.view.maps.MapsActivity
 import com.code.presubmission.view.welcome.WelcomeActivity
 
 class MainActivity : AppCompatActivity() {
@@ -68,6 +69,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.cvAddStory.setOnClickListener{
             val intent = Intent(this, AddStoryActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.fabMaps.setOnClickListener{
+            val intent = Intent(this, MapsActivity::class.java)
             startActivity(intent)
         }
 

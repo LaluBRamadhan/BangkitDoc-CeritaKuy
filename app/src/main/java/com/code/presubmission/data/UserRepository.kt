@@ -17,8 +17,11 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.Call
+import retrofit2.Callback
 
 import retrofit2.HttpException
+import retrofit2.Response
 import java.io.File
 
 
@@ -30,6 +33,9 @@ class UserRepository private constructor(
 
     private val _isLoading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _isLoading
+
+    private val _listStoryLocation = MutableLiveData<StoryResponse>()
+    val listStoryLocation: LiveData<StoryResponse> = _listStoryLocation
 
 
     fun signup(name: String, email: String, password: String) = liveData {
@@ -95,6 +101,30 @@ class UserRepository private constructor(
             val error = Gson().fromJson(errorBody, RegisterResponse::class.java)
             emit(error.message?.let { ResultState.Error(it) })
         }
+    }
+
+    fun getStoryLocation(token: String){
+        _isLoading.value = true
+
+        val client = apiService.getStoriesWithLocation("Bearer $token")
+        client.enqueue(object: Callback<StoryResponse>{
+            override fun onResponse(call: Call<StoryResponse>, response: Response<StoryResponse>) {
+                _isLoading.value = false
+                if (response.isSuccessful && response.body() != null) {
+                    _listStoryLocation.value = response.body()
+                } else {
+                    Log.e(
+                        "getStory",
+                        "onFailure: ${response.message()}, ${response.body()?.message.toString()}"
+                    )
+                }
+            }
+
+            override fun onFailure(call: Call<StoryResponse>, t: Throwable) {
+                Log.e("getStory", "onFailure: ${t.message.toString()}")
+            }
+
+        })
     }
 
     suspend fun saveSession(user: UserModel) {

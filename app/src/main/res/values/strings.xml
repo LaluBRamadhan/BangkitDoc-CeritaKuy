@@ -16,4 +16,6 @@
     <string name="upload">Upload</string>
     <string name="camera_icon">camera_icon</string>
     <string name="logout_icon">logout_icon</string>
+    <string name="fab">FAB</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>
