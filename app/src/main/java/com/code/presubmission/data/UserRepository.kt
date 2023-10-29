@@ -3,10 +3,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.code.presubmission.data.pref.ResultState
 import com.code.presubmission.data.pref.UserModel
 import com.code.presubmission.data.pref.UserPreference
 import com.code.presubmission.data.response.DetailStoryResponse
+import com.code.presubmission.data.response.ListStoryItem
 import com.code.presubmission.data.response.LoginResponse
 import com.code.presubmission.data.response.RegisterResponse
 import com.code.presubmission.data.response.StoryResponse
@@ -63,16 +68,15 @@ class UserRepository private constructor(
         }
     }
 
-    fun getStory(token:String) = liveData {
-        emit(ResultState.Loading)
-        try {
-            val success = apiService.getStories("Bearer $token")
-            emit(ResultState.Success(success))
-        }catch (e: HttpException){
-            val errorBody = e.response()?.errorBody()?.string()
-            val error = Gson().fromJson(errorBody, StoryResponse::class.java)
-            emit(error.message?.let { ResultState.Error(it)})
-        }
+    fun getStory(token:String): LiveData<PagingData<ListStoryItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5
+            ),
+            pagingSourceFactory = {
+                StoryPagingSource(userPreference,apiService)
+            }
+        ).liveData
     }
 
     fun detailStory(token: String, id: String): LiveData<DetailStoryResponse> = liveData{

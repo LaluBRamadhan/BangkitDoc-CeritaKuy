@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -13,7 +14,7 @@ import com.code.presubmission.databinding.ItemRowBinding
 import com.code.presubmission.util.DiffUtilCallback
 import com.code.presubmission.view.detail.DetailActivity
 
-class StoryAdapter : ListAdapter<ListStoryItem, StoryAdapter.ListViewHolder>(DiffUtilCallback()) {
+class StoryAdapter : PagingDataAdapter<ListStoryItem, StoryAdapter.ListViewHolder>(DiffUtilCallback()) {
 
     class ListViewHolder(private val binding: ItemRowBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(story: ListStoryItem) {
@@ -40,7 +41,9 @@ class StoryAdapter : ListAdapter<ListStoryItem, StoryAdapter.ListViewHolder>(Dif
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val story = getItem(position)
-        holder.bind(story)
+        if (story != null) {
+            holder.bind(story)
+        }
     }
 
 }

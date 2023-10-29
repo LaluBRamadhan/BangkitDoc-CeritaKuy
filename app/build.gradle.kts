@@ -62,5 +62,6 @@ dependencies {
     implementation ("com.google.android.gms:play-services-maps:18.2.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("androidx.paging:paging-runtime-ktx:3.1.0")
 
 }

@@ -42,24 +42,32 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, WelcomeActivity::class.java))
                 finish()
             }else{
-                mainViewModel.getStory(user.token).observe(this){result ->
-                    if(result!=null){
-                        when(result){
-                            is ResultState.Loading -> {
-                                showLoading(true)
-                            }
-                            is ResultState.Success -> {
-                                val story = result.data.listStory
-                                adapter.submitList(story)
-                                recyclerView.adapter = adapter
-                                showLoading(false)
-                            }
-                            is ResultState.Error -> {
-                                showLoading(false)
-                            }
-                        }
+                showLoading(false)
+                val adapter = StoryAdapter()
+                binding.rvItem.adapter = adapter
+                mainViewModel.getStory(user.token).observe(this) {
+                    if (it != null) {
+                        adapter.submitData(lifecycle, it)
                     }
                 }
+//                mainViewModel.getStory(user.token).observe(this){result ->
+//                    if(result!=null){
+//                        when(result){
+//                            is ResultState.Loading -> {
+//                                showLoading(true)
+//                            }
+//                            is ResultState.Success -> {
+//                                val story = result.data.listStory
+//                                adapter.submitList(story)
+//                                recyclerView.adapter = adapter
+//                                showLoading(false)
+//                            }
+//                            is ResultState.Error -> {
+//                                showLoading(false)
+//                            }
+//                        }
+//                    }
+//                }
             }
         }
         binding.cvKeluar.setOnClickListener{
