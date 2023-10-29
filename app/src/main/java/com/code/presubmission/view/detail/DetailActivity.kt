@@ -7,9 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
-import com.code.presubmission.R
 import com.code.presubmission.data.response.DetailStoryResponse
-import com.code.presubmission.data.response.RegisterResponse
 import com.code.presubmission.databinding.ActivityDetailBinding
 import com.code.presubmission.view.ViewModelFactory
 import com.code.presubmission.view.welcome.WelcomeActivity

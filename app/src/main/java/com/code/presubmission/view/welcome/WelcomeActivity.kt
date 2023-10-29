@@ -9,7 +9,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import com.code.presubmission.R
 import com.code.presubmission.databinding.ActivityWelcomeBinding
 import com.code.presubmission.view.login.LoginActivity
 import com.code.presubmission.view.signup.SignupActivity

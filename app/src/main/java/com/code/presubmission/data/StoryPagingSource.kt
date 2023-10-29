@@ -3,7 +3,6 @@ package com.code.presubmission.data
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.code.presubmission.data.pref.UserPreference
-import com.code.presubmission.data.response.DetailStoryResponse
 import com.code.presubmission.data.response.ListStoryItem
 import com.code.presubmission.data.retrofit.ApiService
 import kotlinx.coroutines.flow.first

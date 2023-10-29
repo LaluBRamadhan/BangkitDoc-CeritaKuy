@@ -5,13 +5,13 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.code.presubmission.data.pref.ResultState
 import com.code.presubmission.databinding.ActivityMainBinding
 import com.code.presubmission.view.upload.AddStoryActivity
 import com.code.presubmission.view.ViewModelFactory
@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+        showLoading(true)
         mainViewModel.getSession().observe(this) { user ->
             if (!user.isLogin) {
                 startActivity(Intent(this, WelcomeActivity::class.java))
@@ -48,7 +49,9 @@ class MainActivity : AppCompatActivity() {
                 mainViewModel.getStory(user.token).observe(this) {
                     if (it != null) {
                         adapter.submitData(lifecycle, it)
+
                     }
+                    Log.e("token", "onCreate: ${user.token}", )
                 }
 //                mainViewModel.getStory(user.token).observe(this){result ->
 //                    if(result!=null){

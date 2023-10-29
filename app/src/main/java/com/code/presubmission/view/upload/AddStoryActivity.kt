@@ -1,6 +1,5 @@
 package com.code.presubmission.view.upload
 
-import android.app.ProgressDialog.show
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -10,15 +9,12 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
-import com.code.presubmission.R
 import com.code.presubmission.data.pref.ResultState
 import com.code.presubmission.databinding.ActivityAddStoryBinding
 import com.code.presubmission.util.getImageUri
 import com.code.presubmission.util.reduceFileImage
 import com.code.presubmission.util.uriToFile
 import com.code.presubmission.view.ViewModelFactory
-import com.code.presubmission.view.detail.DetailViewModel
 import com.code.presubmission.view.main.MainActivity
 import com.code.presubmission.view.welcome.WelcomeActivity
 
