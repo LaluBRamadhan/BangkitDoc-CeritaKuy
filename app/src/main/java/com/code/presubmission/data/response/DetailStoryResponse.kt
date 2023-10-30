@@ -29,12 +29,12 @@ data class Story(
 	val description: String? = null,
 
 	@field:SerializedName("lon")
-	val lon: Boolean? = null,
+	val lon: Double,
 
 	@field:SerializedName("id")
 	val id: String? = null,
 
 	@field:SerializedName("lat")
-	val lat: Boolean? = null
+	val lat: Double
 
 )
